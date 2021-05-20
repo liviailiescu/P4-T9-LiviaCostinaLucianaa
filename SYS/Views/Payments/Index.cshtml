@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SYS.Models.Payment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tip_plata)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data_plata)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reservation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tip_plata)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_plata)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reservation.ReservationID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PaymentID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PaymentID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PaymentID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
